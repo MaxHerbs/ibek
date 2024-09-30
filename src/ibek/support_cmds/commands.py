@@ -160,7 +160,7 @@ def git_clone(
         rmtree(location, ignore_errors=True)
 
 
-    if local:
+    if local_path:
         url = local_path
 
     Repo.clone_from(
