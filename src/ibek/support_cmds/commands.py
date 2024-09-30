@@ -141,7 +141,8 @@ def git_clone(
     org: str = typer.Option(
         "https://github.com/epics-modules/", help="repo organization URL"
     ),
-    force: bool = typer.Option(False, help="overwrite existing clone"),
+    force: bool = typer.Option(False, help="overwrite existing clone"), 
+    local_path: str = typer.Option(False, help="Select a local path instead of a remote repository.")
 ):
     """
     clone a support module from a remote repository
@@ -157,6 +158,10 @@ def git_clone(
         return
     else:
         rmtree(location, ignore_errors=True)
+
+
+    if local:
+        url = local_path
 
     Repo.clone_from(
         url,
